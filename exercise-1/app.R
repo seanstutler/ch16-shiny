@@ -11,16 +11,9 @@ ui <- fluidPage(
     p("This is my first website written using", strong("Shiny")),
     img("", src="https://media2.giphy.com/media/l3q2Ip7FrmPE33EiI/giphy.gif"),
     p("this is a paragraph about a", em("slider")),
-    fluidRow(
-        column(4,
-               sliderInput("slider1", label = h3("Slider"), min = 0,
-                           max = 100, value = 50)
-        )
-    ),
-    hr(),
-    fluidRow(
-        column(4, verbatimTextOutput("value")),
-        column(4, verbatimTextOutput("range"))
+    sliderInput(
+        "slider",
+        "My First Slider", min = 0, max = 100, value = 50, step = 10
     )
 )
 
