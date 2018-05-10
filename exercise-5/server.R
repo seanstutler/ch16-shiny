@@ -14,12 +14,14 @@ joined_data <- left_join(df, state_codes, by="state")
 joined_data <- joined_data %>% mutate(ratio = votes/population * 100000)
 
 # Start shinyServer
-shinyServer(function(input, output) { 
-  
-  # Render a plotly object that returns your map
-  output$map <- renderPlotly({ 
-      return(build_map(joined_data, input$mapvar))
-  }) 
-  
- 
+shinyServer(function(input, output) {
+
+    # Render a plotly object that returns your map
+    output$map <- renderPlotly({
+        return(build_map(joined_data, input$mapvar))
+    })
+
+    output$scatter <- renderPlotly({
+        return(build_scatter(joined_data, input$search))
+    })
 })
